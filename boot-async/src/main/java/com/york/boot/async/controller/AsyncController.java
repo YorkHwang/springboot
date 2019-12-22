@@ -54,7 +54,7 @@ public class AsyncController {
         System.out.println("异步查询商品信息的线程名称："+Thread.currentThread().getName());
 
 
-        Future<Integer> collectsCountFuture = goodsService.getCollectsCountAsync2();
+        Future<Integer> collectsCountFuture = goodsService.getCollectsCountAsync();
         Future<Integer> commentsCountFuture = goodsService.getCommentsCountAsync();
         Future<Integer> salesCountFuture = goodsService.getSalesCountAsync();
 

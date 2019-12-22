@@ -44,7 +44,7 @@ public class GoodsService {
     }
 
 
-    @Async("asyncExecutor2")
+    @Async()
     public Future<Integer> getCommentsCountAsync(){
         //模拟DB或者其他系统查询结果等待时间
         sleep();
@@ -52,7 +52,7 @@ public class GoodsService {
         return new AsyncResult<>(1000);
     }
 
-    @Async("asyncExecutor")
+    @Async("asyncExecutor2")
     public Future<Integer>  getSalesCountAsync(){
         sleep();
         System.out.println("异步查询销量线程的名称："+Thread.currentThread().getName());
