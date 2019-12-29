@@ -1,7 +1,7 @@
 package com.york.common;
 
 public class BusinessException extends RuntimeException {
-    private static final long serialVersionUID = -5596727894144681269L;
+    private static final long serialVersionUID = 1L;
 
     protected final String    code;
 
