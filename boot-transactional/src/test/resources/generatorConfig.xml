@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+		PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+		"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<context id="mybatisGen"  defaultModelType="flat" targetRuntime="MyBatis3Simple">
+		<property name="javaFileEncoding" value="UTF-8"/>
+		<property name="beginningDelimiter" value="`" />
+		<property name="endingDelimiter" value="`" />
+		<property name="autoDelimitKeywords" value="true"/>
+
+
+        <plugin type="com.york.gen.MyMapperPlugin">
+            <property name="mappers" value="com.york.dao.mapper.BaseMapper" />
+        </plugin>
+
+		<jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+			connectionURL="jdbc:mysql://127.0.0.1:3306/supermarket" userId="root" password="123456">
+		</jdbcConnection>
+
+		<javaModelGenerator targetPackage="com.york.dao.entity" targetProject="src/main/java"/>
+
+		<sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
+
+		<javaClientGenerator type="XMLMAPPER" targetPackage="com.york.dao.mapper" targetProject="src/main/java">
+			<property name="rootClass" value="com.york.dao.base.BaseMapper" />
+		</javaClientGenerator>
+
+		<table tableName="order_item" domainObjectName="OrderItemEntity"></table>
+		<table tableName="good_stock" domainObjectName="GoodStockEntity"></table>
+
+
+	</context>
+</generatorConfiguration>
