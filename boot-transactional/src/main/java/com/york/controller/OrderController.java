@@ -22,7 +22,7 @@ public class OrderController {
 
     @RequestMapping("/add/order")
     @ResponseBody
-    public ResponseJson addOrder(long goodsId, int count){
+    public ResponseJson addOrder(long goodsId, int count) throws Exception{
         long userId = 100L;
         OrderItemEntity orderItemEntity = orderService.addOrder(goodsId, userId, count);
         return ResponseJson.success(orderItemEntity);

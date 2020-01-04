@@ -28,8 +28,8 @@ public class OrderService {
 
 
 
-    @Transactional
-    public OrderItemEntity addOrder(long goodsId, long userId, int count){
+    @Transactional(noRollbackFor = RuntimeException.class)
+    public OrderItemEntity addOrder(long goodsId, long userId, int count) throws Exception {
         //创建订单
         OrderItemEntity orderItemEntity = new OrderItemEntity();
         orderItemEntity.setOrderNo(UUID.randomUUID().toString().replace("-",""));
@@ -45,12 +45,25 @@ public class OrderService {
             throw new BusinessException("下单失败，库存不足！");
         }
 
-        return orderItemEntity;
+        if(true) {
+            throw new RuntimeException("手动抛出异常，但是不回滚");
+        }
+
+
+
+
+        return getOrder(orderItemEntity.getItemId());
     }
+
 
 
     private BigDecimal getGoodsPrice(long goodsId){
         return new BigDecimal(goodsId);
     }
 
+
+    @Transactional(readOnly = true)
+    public OrderItemEntity getOrder(Long itemId){
+        return orderItemEntityMapper.selectByPrimaryKey(itemId);
+    }
 }
