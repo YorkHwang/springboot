@@ -53,6 +53,7 @@
     <modules>
         <module>boot-async</module>
         <module>boot-transactional</module>
+        <module>boot-controller-advice</module>
     </modules>
 
 
