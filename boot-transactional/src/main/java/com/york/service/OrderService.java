@@ -27,7 +27,6 @@ public class OrderService {
     GoodStockEntityMapper goodStockEntityMapper;
 
 
-
     @Transactional(noRollbackFor = RuntimeException.class)
     public OrderItemEntity addOrder(long goodsId, long userId, int count) throws Exception {
         //创建订单
